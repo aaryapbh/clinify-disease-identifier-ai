@@ -132,7 +132,7 @@ def extract_symptoms(symptoms_text: str, conditions_data: Dict) -> Tuple[List[st
     tokens = preprocess_text(symptoms_text)
     text_lower = symptoms_text.lower()
     
-    # Common symptom variations and synonyms
+    # Common symptom variations and synonyms (all in lowercase)
     common_symptoms = {
         "cold": ["cold", "common cold", "chill", "chills", "feeling cold"],
         "headache": ["headache", "head pain", "head ache", "migraine", "head pressure"],
@@ -166,59 +166,37 @@ def extract_symptoms(symptoms_text: str, conditions_data: Dict) -> Tuple[List[st
         "numbness": ["numbness", "numb", "tingling", "pins and needles"]
     }
     
-    # Create symptom variations with medical terminology
-    all_symptoms: Set[str] = set()
-    symptom_variations: Dict[str, List[str]] = {}
-    
-    # Add common symptoms to the variations
-    for main_symptom, variations in common_symptoms.items():
-        all_symptoms.add(main_symptom)
-        symptom_variations[main_symptom] = variations
-    
-    # Add conditions data symptoms
-    for condition_data in conditions_data.values():
-        for symptom in condition_data['symptoms']:
-            all_symptoms.add(symptom)
-            base_variations = [
-                symptom.lower(),
-                symptom.lower().replace(' ', ''),
-                symptom.lower().replace('-', ' '),
-                symptom.lower().replace(' ', '-'),
-                symptom.lower().replace('pain', 'ache'),
-                symptom.lower().replace('ache', 'pain'),
-                symptom.lower().replace('difficulty', 'trouble'),
-                symptom.lower().replace('trouble', 'difficulty')
-            ]
-            # Add to existing variations if it's a common symptom
-            if symptom in common_symptoms:
-                base_variations.extend(common_symptoms[symptom])
-            symptom_variations[symptom] = list(set(base_variations))
-    
-    # Extract symptoms with context and confidence
+    # Create a set to track unique symptoms (case-insensitive)
+    extracted_symptoms_set = set()
     extracted_symptoms = []
     symptom_contexts = {}
     symptom_confidence = {}
     
     # First pass: Check for common symptoms and their variations
-    for symptom, variations in symptom_variations.items():
+    for main_symptom, variations in common_symptoms.items():
         for variation in variations:
             if variation in text_lower:
-                if symptom not in extracted_symptoms:
-                    extracted_symptoms.append(symptom)
+                main_symptom_lower = main_symptom.lower()
+                if main_symptom_lower not in extracted_symptoms_set:
+                    extracted_symptoms_set.add(main_symptom_lower)
+                    # Use the main_symptom with proper capitalization
+                    extracted_symptoms.append(main_symptom)
                     match_idx = text_lower.find(variation)
                     start = max(0, match_idx - 30)
                     end = min(len(text_lower), match_idx + len(variation) + 30)
-                    symptom_contexts[symptom] = text_lower[start:end]
-                    symptom_confidence[symptom] = 1.0
+                    symptom_contexts[main_symptom] = text_lower[start:end]
+                    symptom_confidence[main_symptom] = 1.0
                 break
     
     # Second pass: Token-based matching for remaining symptoms
     if len(extracted_symptoms) < 3:  # Only do partial matching if we haven't found many symptoms
-        for symptom in all_symptoms:
-            if symptom not in extracted_symptoms:
+        for symptom in conditions_data:
+            symptom_lower = symptom.lower()
+            if symptom_lower not in extracted_symptoms_set:
                 symptom_tokens = preprocess_text(symptom)
                 token_match_count = sum(1 for token in symptom_tokens if token in tokens)
                 if token_match_count >= max(1, len(symptom_tokens) * 0.7):  # Increased threshold
+                    extracted_symptoms_set.add(symptom_lower)
                     extracted_symptoms.append(symptom)
                     symptom_contexts[symptom] = symptoms_text
                     symptom_confidence[symptom] = token_match_count / len(symptom_tokens)
