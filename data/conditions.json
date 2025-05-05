@@ -1,0 +1,272 @@
+{
+  "Common Cold": {
+    "symptoms": [
+      "Runny nose", 
+      "Sneezing", 
+      "Congestion", 
+      "Sore throat", 
+      "Cough", 
+      "Mild fever", 
+      "Headache", 
+      "Fatigue"
+    ],
+    "severity": "mild",
+    "contagious": true
+  },
+  "Influenza (Flu)": {
+    "symptoms": [
+      "High fever", 
+      "Chills", 
+      "Body aches", 
+      "Fatigue", 
+      "Headache", 
+      "Sore throat", 
+      "Dry cough", 
+      "Runny nose", 
+      "Nausea"
+    ],
+    "severity": "moderate",
+    "contagious": true
+  },
+  "COVID-19": {
+    "symptoms": [
+      "Fever", 
+      "Dry cough", 
+      "Fatigue", 
+      "Shortness of breath", 
+      "Loss of taste", 
+      "Loss of smell", 
+      "Sore throat", 
+      "Body aches", 
+      "Headache"
+    ],
+    "severity": "moderate to severe",
+    "contagious": true
+  },
+  "Allergic Rhinitis": {
+    "symptoms": [
+      "Sneezing", 
+      "Itchy eyes", 
+      "Runny nose", 
+      "Nasal congestion", 
+      "Watery eyes", 
+      "Itchy throat"
+    ],
+    "severity": "mild",
+    "contagious": false
+  },
+  "Migraine": {
+    "symptoms": [
+      "Severe headache", 
+      "Throbbing pain", 
+      "Nausea", 
+      "Vomiting", 
+      "Sensitivity to light", 
+      "Sensitivity to sound", 
+      "Visual disturbances"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false
+  },
+  "Gastroenteritis": {
+    "symptoms": [
+      "Nausea", 
+      "Vomiting", 
+      "Diarrhea", 
+      "Abdominal cramps", 
+      "Fever", 
+      "Headache", 
+      "Loss of appetite"
+    ],
+    "severity": "mild to moderate",
+    "contagious": true
+  },
+  "Urinary Tract Infection": {
+    "symptoms": [
+      "Frequent urination", 
+      "Burning sensation when urinating", 
+      "Cloudy urine", 
+      "Strong-smelling urine", 
+      "Pelvic pain", 
+      "Feeling tired", 
+      "Fever"
+    ],
+    "severity": "mild to moderate",
+    "contagious": false
+  },
+  "Bronchitis": {
+    "symptoms": [
+      "Persistent cough", 
+      "Mucus production", 
+      "Fatigue", 
+      "Shortness of breath", 
+      "Chest discomfort", 
+      "Mild fever", 
+      "Sore throat"
+    ],
+    "severity": "moderate",
+    "contagious": true
+  },
+  "Asthma": {
+    "symptoms": [
+      "Shortness of breath", 
+      "Wheezing", 
+      "Chest tightness", 
+      "Coughing", 
+      "Trouble sleeping", 
+      "Fatigue"
+    ],
+    "severity": "mild to severe",
+    "contagious": false
+  },
+  "Hypertension": {
+    "symptoms": [
+      "Headache", 
+      "Shortness of breath", 
+      "Nosebleeds", 
+      "Dizziness", 
+      "Chest pain", 
+      "Visual changes", 
+      "Fatigue"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false
+  },
+  "Anxiety Disorder": {
+    "symptoms": [
+      "Excessive worry", 
+      "Restlessness", 
+      "Fatigue", 
+      "Difficulty concentrating", 
+      "Irritability", 
+      "Muscle tension", 
+      "Sleep problems", 
+      "Rapid heartbeat", 
+      "Sweating"
+    ],
+    "severity": "mild to severe",
+    "contagious": false
+  },
+  "Depression": {
+    "symptoms": [
+      "Persistent sadness", 
+      "Loss of interest", 
+      "Changes in appetite", 
+      "Sleep disturbances", 
+      "Fatigue", 
+      "Difficulty concentrating", 
+      "Feelings of worthlessness", 
+      "Thoughts of death"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false
+  },
+  "Diabetes Type 2": {
+    "symptoms": [
+      "Increased thirst", 
+      "Frequent urination", 
+      "Increased hunger", 
+      "Unexplained weight loss", 
+      "Fatigue", 
+      "Blurred vision", 
+      "Slow-healing sores"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false
+  },
+  "Acute Sinusitis": {
+    "symptoms": [
+      "Facial pain", 
+      "Nasal congestion", 
+      "Thick nasal discharge", 
+      "Reduced sense of smell", 
+      "Fever", 
+      "Fatigue", 
+      "Dental pain", 
+      "Bad breath"
+    ],
+    "severity": "mild to moderate",
+    "contagious": false
+  },
+  "Acid Reflux (GERD)": {
+    "symptoms": [
+      "Heartburn", 
+      "Chest pain", 
+      "Difficulty swallowing", 
+      "Regurgitation of food", 
+      "Feeling of lump in throat", 
+      "Chronic cough", 
+      "Sore throat"
+    ],
+    "severity": "mild to moderate",
+    "contagious": false
+  },
+  "Food Poisoning": {
+    "symptoms": [
+      "Nausea", 
+      "Vomiting", 
+      "Diarrhea", 
+      "Abdominal pain", 
+      "Fever", 
+      "Headache", 
+      "Weakness", 
+      "Dehydration"
+    ],
+    "severity": "mild to severe",
+    "contagious": false
+  },
+  "Conjunctivitis (Pink Eye)": {
+    "symptoms": [
+      "Red eyes", 
+      "Itchy eyes", 
+      "Gritty feeling in eyes", 
+      "Eye discharge", 
+      "Tearing", 
+      "Sensitivity to light", 
+      "Swollen eyelids"
+    ],
+    "severity": "mild",
+    "contagious": true
+  },
+  "Strep Throat": {
+    "symptoms": [
+      "Severe sore throat", 
+      "Pain when swallowing", 
+      "Fever", 
+      "Red and swollen tonsils", 
+      "White patches in throat", 
+      "Swollen neck glands", 
+      "Headache", 
+      "Rash"
+    ],
+    "severity": "moderate",
+    "contagious": true
+  },
+  "Pneumonia": {
+    "symptoms": [
+      "Chest pain", 
+      "Difficulty breathing", 
+      "Persistent cough", 
+      "Fever", 
+      "Chills", 
+      "Fatigue", 
+      "Nausea", 
+      "Shortness of breath"
+    ],
+    "severity": "moderate to severe",
+    "contagious": true
+  },
+  "Irritable Bowel Syndrome": {
+    "symptoms": [
+      "Abdominal pain", 
+      "Cramping", 
+      "Bloating", 
+      "Gas", 
+      "Diarrhea", 
+      "Constipation", 
+      "Mucus in stool"
+    ],
+    "severity": "mild to moderate",
+    "contagious": false
+  }
+}
