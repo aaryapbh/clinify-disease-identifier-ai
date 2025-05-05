@@ -1,0 +1,25 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circle background -->
+  <circle cx="100" cy="100" r="90" fill="#2c90cc" opacity="0.1" />
+  
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#2c90cc" stroke-width="4" />
+  
+  <!-- Cross symbol -->
+  <rect x="90" y="50" width="20" height="100" rx="5" fill="#2c90cc" />
+  <rect x="50" y="90" width="100" height="20" rx="5" fill="#2c90cc" />
+  
+  <!-- Pulse line -->
+  <path d="M30,130 L50,130 L65,100 L85,160 L100,110 L120,130 L140,80 L150,130 L170,130" 
+        stroke="#4caf50" 
+        stroke-width="4" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+        
+  <!-- AI Text -->
+  <text x="122" y="180" font-family="Arial" font-size="24" font-weight="bold" fill="#2c90cc">.ai</text>
+  
+  <!-- Clinify Text -->
+  <text x="40" y="180" font-family="Arial" font-size="24" font-weight="bold" fill="#333333">Clinify</text>
+</svg>
