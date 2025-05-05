@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -16,6 +15,7 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -23,25 +23,37 @@ var/
 # Virtual Environment
 venv/
 ENV/
+env/
 .env
 
-# Streamlit
-.streamlit/secrets.toml
-
-# IDE and Editor folders
+# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# OS specific
+# Streamlit
+.streamlit/secrets.toml
+
+# OpenAI
+.env
+.env.local
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Local development
+*.db
+*.sqlite3
+
+# OS specific
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db
-
-# NLTK data
-nltk_data/

@@ -268,5 +268,181 @@
     ],
     "severity": "mild to moderate",
     "contagious": false
+  },
+  "Malaria": {
+    "symptoms": [
+      "Fever",
+      "Chills",
+      "Sweating",
+      "Headache",
+      "Fatigue",
+      "Muscle aches",
+      "Nausea",
+      "Vomiting",
+      "Diarrhea",
+      "Anemia",
+      "Jaundice"
+    ],
+    "severity": "severe",
+    "contagious": false,
+    "risk_factors": ["mosquito_bite", "travel_tropical"]
+  },
+  "Dengue Fever": {
+    "symptoms": [
+      "High fever",
+      "Severe headache",
+      "Pain behind eyes",
+      "Joint pain",
+      "Muscle pain",
+      "Rash",
+      "Fatigue",
+      "Nausea",
+      "Vomiting",
+      "Mild bleeding"
+    ],
+    "severity": "severe",
+    "contagious": false,
+    "risk_factors": ["mosquito_bite", "travel_tropical"]
+  },
+  "Tuberculosis": {
+    "symptoms": [
+      "Persistent cough",
+      "Coughing up blood",
+      "Night sweats",
+      "Fever",
+      "Weight loss",
+      "Fatigue",
+      "Loss of appetite",
+      "Chest pain",
+      "Difficulty breathing"
+    ],
+    "severity": "severe",
+    "contagious": true,
+    "risk_factors": ["close_contact", "weakened_immune_system", "living_conditions"]
+  },
+  "Lyme Disease": {
+    "symptoms": [
+      "Bull's-eye rash",
+      "Fever",
+      "Chills",
+      "Fatigue",
+      "Body aches",
+      "Joint pain",
+      "Headache",
+      "Neck stiffness",
+      "Facial palsy"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false,
+    "risk_factors": ["tick_bite", "outdoor_activity", "wooded_areas"]
+  },
+  "Rheumatoid Arthritis": {
+    "symptoms": [
+      "Joint pain",
+      "Joint swelling",
+      "Joint stiffness",
+      "Symmetrical joint involvement",
+      "Morning stiffness",
+      "Fatigue",
+      "Fever",
+      "Loss of appetite",
+      "Weakness"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false,
+    "risk_factors": ["genetic", "smoking", "obesity"]
+  },
+  "Multiple Sclerosis": {
+    "symptoms": [
+      "Vision problems",
+      "Numbness",
+      "Tingling",
+      "Balance problems",
+      "Dizziness",
+      "Fatigue",
+      "Muscle weakness",
+      "Cognitive changes",
+      "Depression"
+    ],
+    "severity": "severe",
+    "contagious": false,
+    "risk_factors": ["genetic", "vitamin_d_deficiency", "smoking"]
+  },
+  "Celiac Disease": {
+    "symptoms": [
+      "Diarrhea",
+      "Bloating",
+      "Gas",
+      "Fatigue",
+      "Weight loss",
+      "Anemia",
+      "Skin rash",
+      "Joint pain",
+      "Depression"
+    ],
+    "severity": "moderate",
+    "contagious": false,
+    "risk_factors": ["genetic", "diet"]
+  },
+  "Lupus": {
+    "symptoms": [
+      "Butterfly rash",
+      "Joint pain",
+      "Fatigue",
+      "Fever",
+      "Chest pain",
+      "Hair loss",
+      "Sun sensitivity",
+      "Mouth ulcers",
+      "Kidney problems"
+    ],
+    "severity": "severe",
+    "contagious": false,
+    "risk_factors": ["genetic", "environmental", "hormonal"]
+  },
+  "Endometriosis": {
+    "symptoms": [
+      "Pelvic pain",
+      "Painful periods",
+      "Pain during intercourse",
+      "Infertility",
+      "Heavy menstrual bleeding",
+      "Fatigue",
+      "Bowel problems",
+      "Bloating"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false,
+    "risk_factors": ["genetic", "hormonal"]
+  },
+  "Chronic Fatigue Syndrome": {
+    "symptoms": [
+      "Extreme fatigue",
+      "Sleep problems",
+      "Difficulty concentrating",
+      "Muscle pain",
+      "Joint pain",
+      "Headaches",
+      "Sore throat",
+      "Enlarged lymph nodes"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false,
+    "risk_factors": ["viral_infection", "immune_system", "stress"]
+  },
+  "Fibromyalgia": {
+    "symptoms": [
+      "Widespread pain",
+      "Fatigue",
+      "Sleep problems",
+      "Cognitive difficulties",
+      "Depression",
+      "Anxiety",
+      "Headaches",
+      "Digestive problems"
+    ],
+    "severity": "moderate to severe",
+    "contagious": false,
+    "risk_factors": ["genetic", "stress", "trauma"]
   }
 }
