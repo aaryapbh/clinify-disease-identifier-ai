@@ -8,7 +8,7 @@ def get_openai_llm():
     """Initialize OpenAI LLM with optimal settings for medical analysis"""
     try:
         return ChatOpenAI(
-            model="gpt-4o",
+            model="gpt-4",
             temperature=0.3,
             api_key=os.getenv("OPENAI_API_KEY")
         )
