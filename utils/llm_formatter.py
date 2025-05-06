@@ -6,18 +6,14 @@ from langchain_openai import ChatOpenAI
 
 def get_openai_llm():
     """Initialize OpenAI LLM with optimal settings for medical analysis"""
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        raise Exception("OpenAI API key not found. Please ensure the API key is properly configured.")
-    
     try:
         return ChatOpenAI(
             model="gpt-4",
             temperature=0.3,
-            api_key=api_key
+            api_key=os.getenv("OPENAI_API_KEY")
         )
     except Exception as e:
-        raise Exception(f"Error initializing OpenAI model: {str(e)}")
+        raise Exception(f"Error initializing OpenAI model: {e}")
 
 def format_medical_context(context: Dict) -> str:
     """Format medical context into a structured string"""
@@ -52,6 +48,13 @@ def get_explanation(
 ) -> str:
     """
     Generate a comprehensive medical explanation using advanced LLM prompting
+    
+    Args:
+        symptoms: User-reported symptoms
+        condition: Diagnosed condition
+        matched_symptoms: List of matched symptoms
+        context: Additional medical context
+        match_data: Matching confidence and analysis data
     """
     try:
         context = context or {}
@@ -65,35 +68,77 @@ def get_explanation(
         if match_data:
             confidence_info = f"""
             Match Confidence: {match_data.get('confidence', 'Unknown')}
-            Base Match: {match_data.get('match_percentage', 0):.2%}
+            Base Match: {match_data.get('base_match_percentage', 0):.2%}
+            Context Score: {match_data.get('context_score', 0):.2%}
             """
         
         # Enhanced medical analysis prompt
         prompt_template = PromptTemplate(
             input_variables=["symptoms", "condition", "matched_symptoms", "context", "confidence_info"],
             template="""
-            You are an experienced medical analysis system. Analyze the following case:
+            You are an experienced medical analysis system with comprehensive knowledge of clinical diagnosis.
+            Analyze the following case with careful attention to detail and medical accuracy:
 
-            PATIENT SYMPTOMS:
+            PATIENT PRESENTATION:
             {symptoms}
 
-            CONDITION: {condition}
-            MATCHED SYMPTOMS: {matched_symptoms}
-
-            CONTEXT:
+            MEDICAL CONTEXT:
             {context}
 
             ANALYSIS METRICS:
             {confidence_info}
 
-            Please provide a detailed analysis including:
-            1. How the reported symptoms relate to {condition}
-            2. Typical progression and severity
-            3. Common risk factors
-            4. Recommended actions
-            5. When to seek immediate medical attention
+            CONDITION UNDER CONSIDERATION: {condition}
+            MATCHED SYMPTOMS: {matched_symptoms}
 
-            Format your response in markdown with clear sections.
+            Please provide a detailed medical analysis following this structure:
+
+            ### Symptom Analysis
+            - Evaluate each reported symptom's relevance to {condition}
+            - Note symptom patterns and combinations
+            - Identify any potential red flags or critical indicators
+            - Consider symptom severity and progression
+
+            ### Clinical Overview
+            - Provide a clear, accurate description of {condition}
+            - Explain typical disease progression and variations
+            - Discuss common risk factors and triggers
+            - Note typical demographic and environmental factors
+
+            ### Diagnostic Reasoning
+            - Explain the strength of symptom matching
+            - Analyze contextual factors affecting likelihood
+            - Consider alternative explanations
+            - Evaluate the reliability of the diagnosis
+
+            ### Risk Assessment
+            - Identify immediate health risks
+            - Note potential complications
+            - Consider long-term health implications
+            - Evaluate need for urgent care
+
+            ### Recommended Actions
+            1. Immediate steps for symptom management
+            2. Criteria for seeking emergency care
+            3. Recommended medical consultations
+            4. Suggested diagnostic tests
+            5. Preventive measures
+
+            ### Important Considerations
+            - Note any limitations in the analysis
+            - Highlight key uncertainties
+            - Mention similar conditions to consider
+            - Address special population considerations
+
+            ### Medical Disclaimer
+            This analysis is for informational purposes only and does not constitute medical advice. It is based on pattern matching and should not replace professional medical evaluation. Always consult qualified healthcare providers for diagnosis and treatment.
+
+            Guidelines for response:
+            - Use clear, accessible language while maintaining medical accuracy
+            - Prioritize patient safety in recommendations
+            - Be specific about when to seek immediate medical attention
+            - Consider the full context of the patient's situation
+            - Maintain a professional, evidence-based approach
             """
         )
         
@@ -101,7 +146,7 @@ def get_explanation(
         llm = get_openai_llm()
         chain = LLMChain(llm=llm, prompt=prompt_template)
         
-        # Generate analysis
+        # Generate comprehensive analysis
         result = chain.run({
             "symptoms": symptoms,
             "condition": condition,
@@ -114,15 +159,16 @@ def get_explanation(
     
     except Exception as e:
         return f"""
-        ### ⚠️ AI Analysis Temporarily Unavailable
+        ### Error in Medical Analysis Generation
         
-        We're experiencing technical difficulties with our AI analysis system.
-        However, we've identified that your symptoms may be related to {condition}.
+        We encountered an error while generating the detailed medical analysis.
+        Please ensure your OpenAI API key is valid and try again.
         
-        **Matched Symptoms:**
-        {"".join([f"- {symptom}\\n" for symptom in matched_symptoms])}
+        Error details: {str(e)}
         
-        Please consult with a healthcare provider for proper diagnosis and treatment.
+        ### Important Notice
         
-        Technical Details: {str(e)}
+        The condition '{condition}' has been matched to your symptoms ({", ".join(matched_symptoms)}).
+        However, this is not a definitive diagnosis. Please consult with a qualified healthcare provider
+        for proper medical evaluation and treatment.
         """

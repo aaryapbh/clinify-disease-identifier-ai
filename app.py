@@ -4,10 +4,6 @@ import os
 from utils.match_engine import extract_symptoms, match_conditions
 from utils.llm_formatter import get_explanation
 from utils.config import check_api_key
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
 
 # Initialize session states
 if 'openai_api_key' not in st.session_state:
@@ -139,6 +135,11 @@ with main_col1:
         st.title("🩺 Clinify.ai")
         st.markdown("##### Your AI-Powered Health Assessment Assistant")
         st.divider()
+
+    # Check API key status
+    api_key_status = check_api_key()
+    if not api_key_status:
+        st.warning("⚠️ OpenAI API Key Required - Add your API key in the sidebar to enable AI-powered explanations.")
 
     # Initialize session state
     if 'diagnosis_results' not in st.session_state:
@@ -328,18 +329,21 @@ if st.session_state.submitted and st.session_state.diagnosis_results:
                     st.success(symptom)
                 
                 # AI Analysis (generated only when viewing details)
-                try:
-                    explanation = get_explanation(
-                        symptoms=st.session_state.diagnosis_results['symptoms_text'],
-                        condition=selected_match['condition'],
-                        matched_symptoms=selected_match['matched_symptoms'],
-                        context=st.session_state.diagnosis_results['context'],
-                        match_data=selected_match
-                    )
+                if api_key_status:
                     st.markdown("### 🤖 AI Analysis")
-                    st.markdown(explanation)
-                except Exception as e:
-                    st.info("AI-powered analysis is currently unavailable. Basic symptom matching is still functional.")
+                    # Check if we already have generated explanation for this condition
+                    if selected_match['condition'] not in st.session_state.generated_explanation:
+                        with st.spinner("Generating AI analysis..."):
+                            explanation = get_explanation(
+                                symptoms=st.session_state.diagnosis_results['symptoms_text'],
+                                condition=selected_match['condition'],
+                                matched_symptoms=selected_match['matched_symptoms'],
+                                context=st.session_state.diagnosis_results['context'],
+                                match_data=selected_match
+                            )
+                            st.session_state.generated_explanation[selected_match['condition']] = explanation
+                    
+                    st.markdown(st.session_state.generated_explanation[selected_match['condition']])
             
             with col2:
                 # Severity Level
@@ -405,9 +409,28 @@ if st.session_state.show_modal:
 
 # Sidebar with improved layout
 with st.sidebar:
-    st.title("ℹ️ About")
+    st.title("⚙️ Settings & Info")
+    
+    # API key section
+    st.markdown("### 🔑 API Configuration")
+    api_key = st.text_input(
+        "OpenAI API Key",
+        value=st.session_state.openai_api_key,
+        type="password",
+        help="Your key will not be stored permanently",
+        placeholder="Enter your API key here..."
+    )
+    
+    if api_key:
+        st.session_state.openai_api_key = api_key
+        os.environ["OPENAI_API_KEY"] = api_key
+        st.success("✅ API key set successfully!")
+        st.button("🔄 Refresh Analysis", on_click=st.rerun)
+    
+    st.divider()
     
     # About section
+    st.markdown("### ℹ️ About Clinify.ai")
     st.markdown("""
     Clinify.ai combines advanced AI with medical knowledge to provide preliminary health assessments.
     
