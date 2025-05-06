@@ -24,6 +24,9 @@ if 'show_details' not in st.session_state:
 if 'generated_explanation' not in st.session_state:
     st.session_state.generated_explanation = {}
 
+if 'symptoms_input' not in st.session_state:
+    st.session_state.symptoms_input = ""
+
 def show_condition_details(condition_name, match_data):
     """Display detailed information about a matched condition."""
     with st.expander(f"Details for {condition_name}", expanded=True):
