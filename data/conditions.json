@@ -1,13 +1,13 @@
 {
   "Common Cold": {
     "symptoms": [
-      "Runny nose", 
-      "Sneezing", 
-      "Congestion", 
-      "Sore throat", 
-      "Cough", 
-      "Mild fever", 
-      "Headache", 
+      "Runny nose",
+      "Sneezing",
+      "Congestion",
+      "Sore throat",
+      "Cough",
+      "Mild fever",
+      "Headache",
       "Fatigue"
     ],
     "severity": "mild",
@@ -15,14 +15,14 @@
   },
   "Influenza (Flu)": {
     "symptoms": [
-      "High fever", 
-      "Chills", 
-      "Body aches", 
-      "Fatigue", 
-      "Headache", 
-      "Sore throat", 
-      "Dry cough", 
-      "Runny nose", 
+      "High fever",
+      "Chills",
+      "Body aches",
+      "Fatigue",
+      "Headache",
+      "Sore throat",
+      "Dry cough",
+      "Runny nose",
       "Nausea"
     ],
     "severity": "moderate",
@@ -30,14 +30,14 @@
   },
   "COVID-19": {
     "symptoms": [
-      "Fever", 
-      "Dry cough", 
-      "Fatigue", 
-      "Shortness of breath", 
-      "Loss of taste", 
-      "Loss of smell", 
-      "Sore throat", 
-      "Body aches", 
+      "Fever",
+      "Dry cough",
+      "Fatigue",
+      "Shortness of breath",
+      "Loss of taste",
+      "Loss of smell",
+      "Sore throat",
+      "Body aches",
       "Headache"
     ],
     "severity": "moderate to severe",
@@ -45,11 +45,11 @@
   },
   "Allergic Rhinitis": {
     "symptoms": [
-      "Sneezing", 
-      "Itchy eyes", 
-      "Runny nose", 
-      "Nasal congestion", 
-      "Watery eyes", 
+      "Sneezing",
+      "Itchy eyes",
+      "Runny nose",
+      "Nasal congestion",
+      "Watery eyes",
       "Itchy throat"
     ],
     "severity": "mild",
@@ -57,12 +57,12 @@
   },
   "Migraine": {
     "symptoms": [
-      "Severe headache", 
-      "Throbbing pain", 
-      "Nausea", 
-      "Vomiting", 
-      "Sensitivity to light", 
-      "Sensitivity to sound", 
+      "Severe headache",
+      "Throbbing pain",
+      "Nausea",
+      "Vomiting",
+      "Sensitivity to light",
+      "Sensitivity to sound",
       "Visual disturbances"
     ],
     "severity": "moderate to severe",
@@ -70,12 +70,12 @@
   },
   "Gastroenteritis": {
     "symptoms": [
-      "Nausea", 
-      "Vomiting", 
-      "Diarrhea", 
-      "Abdominal cramps", 
-      "Fever", 
-      "Headache", 
+      "Nausea",
+      "Vomiting",
+      "Diarrhea",
+      "Abdominal cramps",
+      "Fever",
+      "Headache",
       "Loss of appetite"
     ],
     "severity": "mild to moderate",
@@ -83,12 +83,12 @@
   },
   "Urinary Tract Infection": {
     "symptoms": [
-      "Frequent urination", 
-      "Burning sensation when urinating", 
-      "Cloudy urine", 
-      "Strong-smelling urine", 
-      "Pelvic pain", 
-      "Feeling tired", 
+      "Frequent urination",
+      "Burning sensation when urinating",
+      "Cloudy urine",
+      "Strong-smelling urine",
+      "Pelvic pain",
+      "Feeling tired",
       "Fever"
     ],
     "severity": "mild to moderate",
@@ -96,12 +96,12 @@
   },
   "Bronchitis": {
     "symptoms": [
-      "Persistent cough", 
-      "Mucus production", 
-      "Fatigue", 
-      "Shortness of breath", 
-      "Chest discomfort", 
-      "Mild fever", 
+      "Persistent cough",
+      "Mucus production",
+      "Fatigue",
+      "Shortness of breath",
+      "Chest discomfort",
+      "Mild fever",
       "Sore throat"
     ],
     "severity": "moderate",
@@ -109,11 +109,11 @@
   },
   "Asthma": {
     "symptoms": [
-      "Shortness of breath", 
-      "Wheezing", 
-      "Chest tightness", 
-      "Coughing", 
-      "Trouble sleeping", 
+      "Shortness of breath",
+      "Wheezing",
+      "Chest tightness",
+      "Coughing",
+      "Trouble sleeping",
       "Fatigue"
     ],
     "severity": "mild to severe",
@@ -121,12 +121,12 @@
   },
   "Hypertension": {
     "symptoms": [
-      "Headache", 
-      "Shortness of breath", 
-      "Nosebleeds", 
-      "Dizziness", 
-      "Chest pain", 
-      "Visual changes", 
+      "Headache",
+      "Shortness of breath",
+      "Nosebleeds",
+      "Dizziness",
+      "Chest pain",
+      "Visual changes",
       "Fatigue"
     ],
     "severity": "moderate to severe",
@@ -134,14 +134,14 @@
   },
   "Anxiety Disorder": {
     "symptoms": [
-      "Excessive worry", 
-      "Restlessness", 
-      "Fatigue", 
-      "Difficulty concentrating", 
-      "Irritability", 
-      "Muscle tension", 
-      "Sleep problems", 
-      "Rapid heartbeat", 
+      "Excessive worry",
+      "Restlessness",
+      "Fatigue",
+      "Difficulty concentrating",
+      "Irritability",
+      "Muscle tension",
+      "Sleep problems",
+      "Rapid heartbeat",
       "Sweating"
     ],
     "severity": "mild to severe",
@@ -149,13 +149,13 @@
   },
   "Depression": {
     "symptoms": [
-      "Persistent sadness", 
-      "Loss of interest", 
-      "Changes in appetite", 
-      "Sleep disturbances", 
-      "Fatigue", 
-      "Difficulty concentrating", 
-      "Feelings of worthlessness", 
+      "Persistent sadness",
+      "Loss of interest",
+      "Changes in appetite",
+      "Sleep disturbances",
+      "Fatigue",
+      "Difficulty concentrating",
+      "Feelings of worthlessness",
       "Thoughts of death"
     ],
     "severity": "moderate to severe",
@@ -163,12 +163,12 @@
   },
   "Diabetes Type 2": {
     "symptoms": [
-      "Increased thirst", 
-      "Frequent urination", 
-      "Increased hunger", 
-      "Unexplained weight loss", 
-      "Fatigue", 
-      "Blurred vision", 
+      "Increased thirst",
+      "Frequent urination",
+      "Increased hunger",
+      "Unexplained weight loss",
+      "Fatigue",
+      "Blurred vision",
       "Slow-healing sores"
     ],
     "severity": "moderate to severe",
@@ -176,13 +176,13 @@
   },
   "Acute Sinusitis": {
     "symptoms": [
-      "Facial pain", 
-      "Nasal congestion", 
-      "Thick nasal discharge", 
-      "Reduced sense of smell", 
-      "Fever", 
-      "Fatigue", 
-      "Dental pain", 
+      "Facial pain",
+      "Nasal congestion",
+      "Thick nasal discharge",
+      "Reduced sense of smell",
+      "Fever",
+      "Fatigue",
+      "Dental pain",
       "Bad breath"
     ],
     "severity": "mild to moderate",
@@ -190,12 +190,12 @@
   },
   "Acid Reflux (GERD)": {
     "symptoms": [
-      "Heartburn", 
-      "Chest pain", 
-      "Difficulty swallowing", 
-      "Regurgitation of food", 
-      "Feeling of lump in throat", 
-      "Chronic cough", 
+      "Heartburn",
+      "Chest pain",
+      "Difficulty swallowing",
+      "Regurgitation of food",
+      "Feeling of lump in throat",
+      "Chronic cough",
       "Sore throat"
     ],
     "severity": "mild to moderate",
@@ -203,13 +203,13 @@
   },
   "Food Poisoning": {
     "symptoms": [
-      "Nausea", 
-      "Vomiting", 
-      "Diarrhea", 
-      "Abdominal pain", 
-      "Fever", 
-      "Headache", 
-      "Weakness", 
+      "Nausea",
+      "Vomiting",
+      "Diarrhea",
+      "Abdominal pain",
+      "Fever",
+      "Headache",
+      "Weakness",
       "Dehydration"
     ],
     "severity": "mild to severe",
@@ -217,12 +217,12 @@
   },
   "Conjunctivitis (Pink Eye)": {
     "symptoms": [
-      "Red eyes", 
-      "Itchy eyes", 
-      "Gritty feeling in eyes", 
-      "Eye discharge", 
-      "Tearing", 
-      "Sensitivity to light", 
+      "Red eyes",
+      "Itchy eyes",
+      "Gritty feeling in eyes",
+      "Eye discharge",
+      "Tearing",
+      "Sensitivity to light",
       "Swollen eyelids"
     ],
     "severity": "mild",
@@ -230,13 +230,13 @@
   },
   "Strep Throat": {
     "symptoms": [
-      "Severe sore throat", 
-      "Pain when swallowing", 
-      "Fever", 
-      "Red and swollen tonsils", 
-      "White patches in throat", 
-      "Swollen neck glands", 
-      "Headache", 
+      "Severe sore throat",
+      "Pain when swallowing",
+      "Fever",
+      "Red and swollen tonsils",
+      "White patches in throat",
+      "Swollen neck glands",
+      "Headache",
       "Rash"
     ],
     "severity": "moderate",
@@ -244,13 +244,13 @@
   },
   "Pneumonia": {
     "symptoms": [
-      "Chest pain", 
-      "Difficulty breathing", 
-      "Persistent cough", 
-      "Fever", 
-      "Chills", 
-      "Fatigue", 
-      "Nausea", 
+      "Chest pain",
+      "Difficulty breathing",
+      "Persistent cough",
+      "Fever",
+      "Chills",
+      "Fatigue",
+      "Nausea",
       "Shortness of breath"
     ],
     "severity": "moderate to severe",
@@ -258,12 +258,12 @@
   },
   "Irritable Bowel Syndrome": {
     "symptoms": [
-      "Abdominal pain", 
-      "Cramping", 
-      "Bloating", 
-      "Gas", 
-      "Diarrhea", 
-      "Constipation", 
+      "Abdominal pain",
+      "Cramping",
+      "Bloating",
+      "Gas",
+      "Diarrhea",
+      "Constipation",
       "Mucus in stool"
     ],
     "severity": "mild to moderate",
@@ -285,7 +285,10 @@
     ],
     "severity": "severe",
     "contagious": false,
-    "risk_factors": ["mosquito_bite", "travel_tropical"]
+    "risk_factors": [
+      "mosquito_bite",
+      "travel_tropical"
+    ]
   },
   "Dengue Fever": {
     "symptoms": [
@@ -302,7 +305,10 @@
     ],
     "severity": "severe",
     "contagious": false,
-    "risk_factors": ["mosquito_bite", "travel_tropical"]
+    "risk_factors": [
+      "mosquito_bite",
+      "travel_tropical"
+    ]
   },
   "Tuberculosis": {
     "symptoms": [
@@ -318,7 +324,11 @@
     ],
     "severity": "severe",
     "contagious": true,
-    "risk_factors": ["close_contact", "weakened_immune_system", "living_conditions"]
+    "risk_factors": [
+      "close_contact",
+      "weakened_immune_system",
+      "living_conditions"
+    ]
   },
   "Lyme Disease": {
     "symptoms": [
@@ -334,7 +344,11 @@
     ],
     "severity": "moderate to severe",
     "contagious": false,
-    "risk_factors": ["tick_bite", "outdoor_activity", "wooded_areas"]
+    "risk_factors": [
+      "tick_bite",
+      "outdoor_activity",
+      "wooded_areas"
+    ]
   },
   "Rheumatoid Arthritis": {
     "symptoms": [
@@ -350,7 +364,11 @@
     ],
     "severity": "moderate to severe",
     "contagious": false,
-    "risk_factors": ["genetic", "smoking", "obesity"]
+    "risk_factors": [
+      "genetic",
+      "smoking",
+      "obesity"
+    ]
   },
   "Multiple Sclerosis": {
     "symptoms": [
@@ -366,7 +384,11 @@
     ],
     "severity": "severe",
     "contagious": false,
-    "risk_factors": ["genetic", "vitamin_d_deficiency", "smoking"]
+    "risk_factors": [
+      "genetic",
+      "vitamin_d_deficiency",
+      "smoking"
+    ]
   },
   "Celiac Disease": {
     "symptoms": [
@@ -382,7 +404,10 @@
     ],
     "severity": "moderate",
     "contagious": false,
-    "risk_factors": ["genetic", "diet"]
+    "risk_factors": [
+      "genetic",
+      "diet"
+    ]
   },
   "Lupus": {
     "symptoms": [
@@ -398,7 +423,11 @@
     ],
     "severity": "severe",
     "contagious": false,
-    "risk_factors": ["genetic", "environmental", "hormonal"]
+    "risk_factors": [
+      "genetic",
+      "environmental",
+      "hormonal"
+    ]
   },
   "Endometriosis": {
     "symptoms": [
@@ -413,7 +442,10 @@
     ],
     "severity": "moderate to severe",
     "contagious": false,
-    "risk_factors": ["genetic", "hormonal"]
+    "risk_factors": [
+      "genetic",
+      "hormonal"
+    ]
   },
   "Chronic Fatigue Syndrome": {
     "symptoms": [
@@ -428,7 +460,11 @@
     ],
     "severity": "moderate to severe",
     "contagious": false,
-    "risk_factors": ["viral_infection", "immune_system", "stress"]
+    "risk_factors": [
+      "viral_infection",
+      "immune_system",
+      "stress"
+    ]
   },
   "Fibromyalgia": {
     "symptoms": [
@@ -443,6 +479,10 @@
     ],
     "severity": "moderate to severe",
     "contagious": false,
-    "risk_factors": ["genetic", "stress", "trauma"]
+    "risk_factors": [
+      "genetic",
+      "stress",
+      "trauma"
+    ]
   }
 }

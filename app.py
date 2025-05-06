@@ -126,10 +126,18 @@ if submit_button and symptoms_text:
     with st.spinner("🔍 Analyzing your symptoms..."):
         extracted_symptoms, context = extract_symptoms(symptoms_text, conditions_data)
         
+        # Debug information
+        st.write("Debug Info:")
+        st.write("Extracted symptoms:", extracted_symptoms)
+        st.write("Context:", context)
+        
         if not extracted_symptoms:
             st.error("⚠️ No symptoms detected. Please provide more specific symptoms for accurate analysis.")
         else:
             matched_conditions = match_conditions(extracted_symptoms, conditions_data, context)
+            # Debug information
+            st.write("Matched conditions:", matched_conditions)
+            
             st.session_state.diagnosis_results = {
                 'symptoms_text': symptoms_text,
                 'extracted_symptoms': extracted_symptoms,
