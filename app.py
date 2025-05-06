@@ -136,11 +136,6 @@ with main_col1:
         st.markdown("##### Your AI-Powered Health Assessment Assistant")
         st.divider()
 
-    # Check API key status
-    api_key_status = check_api_key()
-    if not api_key_status:
-        st.warning("⚠️ OpenAI API Key Required - Add your API key in the sidebar to enable AI-powered explanations.")
-
     # Initialize session state
     if 'diagnosis_results' not in st.session_state:
         st.session_state.diagnosis_results = None
@@ -409,28 +404,9 @@ if st.session_state.show_modal:
 
 # Sidebar with improved layout
 with st.sidebar:
-    st.title("⚙️ Settings & Info")
-    
-    # API key section
-    st.markdown("### 🔑 API Configuration")
-    api_key = st.text_input(
-        "OpenAI API Key",
-        value=st.session_state.openai_api_key,
-        type="password",
-        help="Your key will not be stored permanently",
-        placeholder="Enter your API key here..."
-    )
-    
-    if api_key:
-        st.session_state.openai_api_key = api_key
-        os.environ["OPENAI_API_KEY"] = api_key
-        st.success("✅ API key set successfully!")
-        st.button("🔄 Refresh Analysis", on_click=st.rerun)
-    
-    st.divider()
+    st.title("ℹ️ About")
     
     # About section
-    st.markdown("### ℹ️ About Clinify.ai")
     st.markdown("""
     Clinify.ai combines advanced AI with medical knowledge to provide preliminary health assessments.
     
