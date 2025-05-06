@@ -4,6 +4,10 @@ import os
 from utils.match_engine import extract_symptoms, match_conditions
 from utils.llm_formatter import get_explanation
 from utils.config import check_api_key
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Initialize session states
 if 'openai_api_key' not in st.session_state:
