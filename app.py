@@ -1,26 +1,54 @@
-import streamlit as st
-import json
+# Standard library imports
 import os
-from utils.match_engine import extract_symptoms, match_conditions
-from utils.llm_formatter import get_explanation
-from utils.config import check_api_key
+import json
+from typing import Dict, List, Optional
+
+# Third-party imports
+import streamlit as st
+import openai
+from dotenv import load_dotenv
+
+# Try to load environment variables
+try:
+    load_dotenv()
+except Exception as e:
+    print(f"Warning: Could not load .env file: {e}")
 
 # Initialize API key from environment variable or secrets
 if 'OPENAI_API_KEY' not in st.session_state:
-    st.session_state.OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
+    # Try to get from streamlit secrets first
+    try:
+        st.session_state.OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+    except:
+        # Fallback to environment variable
+        st.session_state.OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
 
 # Function to set API key
-def set_api_key(api_key):
+def set_api_key(api_key: str) -> None:
+    """Set the OpenAI API key in both session state and environment."""
     st.session_state.OPENAI_API_KEY = api_key
     os.environ["OPENAI_API_KEY"] = api_key
+    openai.api_key = api_key
 
-# Initialize session states for modals
-if 'show_modal' not in st.session_state:
-    st.session_state.show_modal = False
-if 'selected_condition' not in st.session_state:
-    st.session_state.selected_condition = None
-if 'selected_match' not in st.session_state:
-    st.session_state.selected_match = None
+# Local imports - wrapped in try-except for better error handling
+try:
+    from utils.match_engine import extract_symptoms, match_conditions
+    from utils.llm_formatter import get_explanation
+    from utils.config import check_api_key
+except ImportError as e:
+    st.error(f"Error importing local modules: {e}")
+    st.stop()
+
+# Load conditions data with error handling
+@st.cache_data
+def load_conditions() -> Dict:
+    """Load and cache conditions data."""
+    try:
+        with open('data/conditions.json', 'r') as f:
+            return json.load(f)
+    except Exception as e:
+        st.error(f"Error loading conditions data: {e}")
+        return {}
 
 # Initialize session states
 if 'show_details' not in st.session_state:
@@ -31,6 +59,14 @@ if 'submitted' not in st.session_state:
     st.session_state.submitted = False
 if 'diagnosis_results' not in st.session_state:
     st.session_state.diagnosis_results = None
+
+# Initialize session states for modals
+if 'show_modal' not in st.session_state:
+    st.session_state.show_modal = False
+if 'selected_condition' not in st.session_state:
+    st.session_state.selected_condition = None
+if 'selected_match' not in st.session_state:
+    st.session_state.selected_match = None
 
 def show_condition_details(condition_name, match_data):
     """Display detailed information about a matched condition."""
@@ -117,16 +153,6 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-
-# Load conditions data
-@st.cache_data
-def load_conditions():
-    try:
-        with open('data/conditions.json', 'r') as f:
-            return json.load(f)
-    except Exception as e:
-        st.error(f"Error loading conditions data: {e}")
-        return {}
 
 conditions_data = load_conditions()
 
