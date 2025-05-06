@@ -324,21 +324,18 @@ if st.session_state.submitted and st.session_state.diagnosis_results:
                     st.success(symptom)
                 
                 # AI Analysis (generated only when viewing details)
-                if api_key_status:
+                try:
+                    explanation = get_explanation(
+                        symptoms=st.session_state.diagnosis_results['symptoms_text'],
+                        condition=selected_match['condition'],
+                        matched_symptoms=selected_match['matched_symptoms'],
+                        context=st.session_state.diagnosis_results['context'],
+                        match_data=selected_match
+                    )
                     st.markdown("### 🤖 AI Analysis")
-                    # Check if we already have generated explanation for this condition
-                    if selected_match['condition'] not in st.session_state.generated_explanation:
-                        with st.spinner("Generating AI analysis..."):
-                            explanation = get_explanation(
-                                symptoms=st.session_state.diagnosis_results['symptoms_text'],
-                                condition=selected_match['condition'],
-                                matched_symptoms=selected_match['matched_symptoms'],
-                                context=st.session_state.diagnosis_results['context'],
-                                match_data=selected_match
-                            )
-                            st.session_state.generated_explanation[selected_match['condition']] = explanation
-                    
-                    st.markdown(st.session_state.generated_explanation[selected_match['condition']])
+                    st.markdown(explanation)
+                except Exception as e:
+                    st.info("AI-powered analysis is currently unavailable. Basic symptom matching is still functional.")
             
             with col2:
                 # Severity Level

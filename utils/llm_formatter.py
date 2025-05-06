@@ -6,14 +6,18 @@ from langchain_openai import ChatOpenAI
 
 def get_openai_llm():
     """Initialize OpenAI LLM with optimal settings for medical analysis"""
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise Exception("OpenAI API key not found. Please ensure the API key is properly configured.")
+    
     try:
         return ChatOpenAI(
             model="gpt-4",
             temperature=0.3,
-            api_key=os.getenv("OPENAI_API_KEY")
+            api_key=api_key
         )
     except Exception as e:
-        raise Exception(f"Error initializing OpenAI model: {e}")
+        raise Exception(f"Error initializing OpenAI model: {str(e)}")
 
 def format_medical_context(context: Dict) -> str:
     """Format medical context into a structured string"""
