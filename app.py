@@ -139,7 +139,7 @@ with main_col1:
     # Check API key status
     api_key_status = check_api_key()
     if not api_key_status:
-        st.error("⚠️ AI-powered explanations are currently unavailable. Please try again later.")
+        st.warning("⚠️ OpenAI API Key Required - Add your API key in the sidebar to enable AI-powered explanations.")
 
     # Initialize session state
     if 'diagnosis_results' not in st.session_state:
@@ -403,15 +403,34 @@ if st.session_state.show_modal:
             st.info(
                 f"This condition matches the following symptoms:\n" +
                 "\n".join([f"• {symptom}" for symptom in st.session_state.selected_match['matched_symptoms']]) +
-                "\n\nDetailed AI analysis is currently unavailable."
+                "\n\n*Add your OpenAI API key for detailed AI explanations.*"
             )
         st.markdown("---")
 
 # Sidebar with improved layout
 with st.sidebar:
-    st.title("ℹ️ About")
+    st.title("⚙️ Settings & Info")
+    
+    # API key section
+    st.markdown("### 🔑 API Configuration")
+    api_key = st.text_input(
+        "OpenAI API Key",
+        value=st.session_state.openai_api_key,
+        type="password",
+        help="Your key will not be stored permanently",
+        placeholder="Enter your API key here..."
+    )
+    
+    if api_key:
+        st.session_state.openai_api_key = api_key
+        os.environ["OPENAI_API_KEY"] = api_key
+        st.success("✅ API key set successfully!")
+        st.button("🔄 Refresh Analysis", on_click=st.rerun)
+    
+    st.divider()
     
     # About section
+    st.markdown("### ℹ️ About Clinify.ai")
     st.markdown("""
     Clinify.ai combines advanced AI with medical knowledge to provide preliminary health assessments.
     
