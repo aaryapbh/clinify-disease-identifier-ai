@@ -1,64 +1,13 @@
-# Standard library imports
-import os
-import json
-from typing import Dict, List, Optional
-
-# Third-party imports
 import streamlit as st
-import openai
+import json
+import os
+from utils.match_engine import extract_symptoms, match_conditions
+from utils.llm_formatter import get_explanation
+from utils.config import check_api_key
 from dotenv import load_dotenv
 
-# Try to load environment variables
-try:
-    load_dotenv()
-except Exception as e:
-    print(f"Warning: Could not load .env file: {e}")
-
-# Initialize API key from environment variable or secrets
-if 'OPENAI_API_KEY' not in st.session_state:
-    # Try to get from streamlit secrets first
-    try:
-        st.session_state.OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
-    except:
-        # Fallback to environment variable
-        st.session_state.OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
-
-# Function to set API key
-def set_api_key(api_key: str) -> None:
-    """Set the OpenAI API key in both session state and environment."""
-    st.session_state.OPENAI_API_KEY = api_key
-    os.environ["OPENAI_API_KEY"] = api_key
-    openai.api_key = api_key
-
-# Local imports - wrapped in try-except for better error handling
-try:
-    from utils.match_engine import extract_symptoms, match_conditions
-    from utils.llm_formatter import get_explanation
-    from utils.config import check_api_key
-except ImportError as e:
-    st.error(f"Error importing local modules: {e}")
-    st.stop()
-
-# Load conditions data with error handling
-@st.cache_data
-def load_conditions() -> Dict:
-    """Load and cache conditions data."""
-    try:
-        with open('data/conditions.json', 'r') as f:
-            return json.load(f)
-    except Exception as e:
-        st.error(f"Error loading conditions data: {e}")
-        return {}
-
-# Initialize session states
-if 'show_details' not in st.session_state:
-    st.session_state.show_details = None
-if 'generated_explanation' not in st.session_state:
-    st.session_state.generated_explanation = {}
-if 'submitted' not in st.session_state:
-    st.session_state.submitted = False
-if 'diagnosis_results' not in st.session_state:
-    st.session_state.diagnosis_results = None
+# Load environment variables
+load_dotenv()
 
 # Initialize session states for modals
 if 'show_modal' not in st.session_state:
@@ -67,6 +16,16 @@ if 'selected_condition' not in st.session_state:
     st.session_state.selected_condition = None
 if 'selected_match' not in st.session_state:
     st.session_state.selected_match = None
+
+# Initialize session states
+if 'show_details' not in st.session_state:
+    st.session_state.show_details = None
+if 'generated_explanation' not in st.session_state:
+    st.session_state.generated_explanation = {}
+
+# Initialize session states
+if 'openai_api_key' not in st.session_state:
+    st.session_state.openai_api_key = os.getenv("OPENAI_API_KEY", "")
 
 def show_condition_details(condition_name, match_data):
     """Display detailed information about a matched condition."""
@@ -154,6 +113,16 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Load conditions data
+@st.cache_data
+def load_conditions():
+    try:
+        with open('data/conditions.json', 'r') as f:
+            return json.load(f)
+    except Exception as e:
+        st.error(f"Error loading conditions data: {e}")
+        return {}
+
 conditions_data = load_conditions()
 
 # Create two main columns for layout
@@ -171,6 +140,12 @@ with main_col1:
     api_key_status = check_api_key()
     if not api_key_status:
         st.warning("⚠️ OpenAI API Key Required - Add your API key in the sidebar to enable AI-powered explanations.")
+
+    # Initialize session state
+    if 'diagnosis_results' not in st.session_state:
+        st.session_state.diagnosis_results = None
+    if 'submitted' not in st.session_state:
+        st.session_state.submitted = False
 
     # Main content section with better spacing
     st.write("")  # Add spacing
@@ -440,14 +415,15 @@ with st.sidebar:
     st.markdown("### 🔑 API Configuration")
     api_key = st.text_input(
         "OpenAI API Key",
+        value=st.session_state.openai_api_key,
         type="password",
         help="Your key will not be stored permanently",
-        placeholder="Enter your API key here...",
-        value=st.session_state.OPENAI_API_KEY
+        placeholder="Enter your API key here..."
     )
     
     if api_key:
-        set_api_key(api_key)
+        st.session_state.openai_api_key = api_key
+        os.environ["OPENAI_API_KEY"] = api_key
         st.success("✅ API key set successfully!")
         st.button("🔄 Refresh Analysis", on_click=st.rerun)
     
