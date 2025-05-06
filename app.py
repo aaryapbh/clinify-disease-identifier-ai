@@ -5,6 +5,15 @@ from utils.match_engine import extract_symptoms, match_conditions
 from utils.llm_formatter import get_explanation
 from utils.config import check_api_key
 
+# Initialize API key from environment variable or secrets
+if 'OPENAI_API_KEY' not in st.session_state:
+    st.session_state.OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
+
+# Function to set API key
+def set_api_key(api_key):
+    st.session_state.OPENAI_API_KEY = api_key
+    os.environ["OPENAI_API_KEY"] = api_key
+
 # Initialize session states for modals
 if 'show_modal' not in st.session_state:
     st.session_state.show_modal = False
@@ -18,6 +27,10 @@ if 'show_details' not in st.session_state:
     st.session_state.show_details = None
 if 'generated_explanation' not in st.session_state:
     st.session_state.generated_explanation = {}
+if 'submitted' not in st.session_state:
+    st.session_state.submitted = False
+if 'diagnosis_results' not in st.session_state:
+    st.session_state.diagnosis_results = None
 
 def show_condition_details(condition_name, match_data):
     """Display detailed information about a matched condition."""
@@ -132,12 +145,6 @@ with main_col1:
     api_key_status = check_api_key()
     if not api_key_status:
         st.warning("⚠️ OpenAI API Key Required - Add your API key in the sidebar to enable AI-powered explanations.")
-
-    # Initialize session state
-    if 'diagnosis_results' not in st.session_state:
-        st.session_state.diagnosis_results = None
-    if 'submitted' not in st.session_state:
-        st.session_state.submitted = False
 
     # Main content section with better spacing
     st.write("")  # Add spacing
@@ -409,11 +416,12 @@ with st.sidebar:
         "OpenAI API Key",
         type="password",
         help="Your key will not be stored permanently",
-        placeholder="Enter your API key here..."
+        placeholder="Enter your API key here...",
+        value=st.session_state.OPENAI_API_KEY
     )
     
     if api_key:
-        os.environ["OPENAI_API_KEY"] = api_key
+        set_api_key(api_key)
         st.success("✅ API key set successfully!")
         st.button("🔄 Refresh Analysis", on_click=st.rerun)
     

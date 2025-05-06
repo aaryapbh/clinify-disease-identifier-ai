@@ -16,6 +16,7 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -23,19 +24,25 @@ var/
 # Virtual Environment
 venv/
 ENV/
-.env
 
-# Streamlit
-.streamlit/secrets.toml
-
-# IDE and Editor folders
+# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
 
-# OS specific
+# Environment variables
+.env
+.env.local
+
+# Streamlit
+.streamlit/secrets.toml
+
+# System Files
 .DS_Store
+Thumbs.db
+
+# OS specific
 .DS_Store?
 ._*
 .Spotlight-V100
