@@ -1,5 +1,8 @@
 # Clinify.ai - Advanced Health Assessment Platform
 
+**Run App
+**Streamlit Cloud App Link - https://clinify-disease-identifier-ai-jwznx8baofvcxdfuguypro.streamlit.app
+
 ## Overview
 
 Clinify.ai is a sophisticated health assessment platform that combines advanced symptom matching algorithms with GPT-4 powered medical explanations. The platform processes natural language symptom descriptions to provide preliminary health insights while maintaining high standards of medical information accuracy.
