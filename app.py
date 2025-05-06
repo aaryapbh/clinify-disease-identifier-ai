@@ -4,28 +4,25 @@ import os
 from utils.match_engine import extract_symptoms, match_conditions
 from utils.llm_formatter import get_explanation
 from utils.config import check_api_key
-from dotenv import load_dotenv
-
-# Load environment variables
-load_dotenv()
-
-# Initialize session states for modals
-if 'show_modal' not in st.session_state:
-    st.session_state.show_modal = False
-if 'selected_condition' not in st.session_state:
-    st.session_state.selected_condition = None
-if 'selected_match' not in st.session_state:
-    st.session_state.selected_match = None
-
-# Initialize session states
-if 'show_details' not in st.session_state:
-    st.session_state.show_details = None
-if 'generated_explanation' not in st.session_state:
-    st.session_state.generated_explanation = {}
 
 # Initialize session states
 if 'openai_api_key' not in st.session_state:
     st.session_state.openai_api_key = os.getenv("OPENAI_API_KEY", "")
+
+if 'show_modal' not in st.session_state:
+    st.session_state.show_modal = False
+
+if 'selected_condition' not in st.session_state:
+    st.session_state.selected_condition = None
+
+if 'selected_match' not in st.session_state:
+    st.session_state.selected_match = None
+
+if 'show_details' not in st.session_state:
+    st.session_state.show_details = None
+
+if 'generated_explanation' not in st.session_state:
+    st.session_state.generated_explanation = {}
 
 def show_condition_details(condition_name, match_data):
     """Display detailed information about a matched condition."""
