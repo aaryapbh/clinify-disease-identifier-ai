@@ -1,7 +1,7 @@
 # Clinify.ai - Advanced Health Assessment Platform
 
-**Run App
-**Streamlit Cloud App Link - https://clinify-disease-identifier-ai-jwznx8baofvcxdfuguypro.streamlit.app
+**Run App**
+Streamlit Cloud App Link - https://clinify-disease-identifier-ai-jwznx8baofvcxdfuguypro.streamlit.app
 
 ## Overview
 
